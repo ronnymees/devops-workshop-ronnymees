@@ -1,0 +1,148 @@
+:root {
+  color-scheme: light;
+
+  --paper: #e8dfc8;
+  --paper-dark: #d7caa8;
+  --ink: #292720;
+  --muted: #625d50;
+  --border: #4c483c;
+  --button: #71684f;
+  --button-hover: #5c5541;
+  --button-text: #fffdf5;
+  --focus: #8a3f2b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--paper) 0%,
+      #eee6d2 50%,
+      var(--paper-dark) 100%
+    );
+
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+/*
+  Assumes the existing heading, paragraph, button and message
+  are inside a main element.
+*/
+main {
+  width: min(100%, 42rem);
+  padding: clamp(2rem, 6vw, 4rem);
+
+  background: #f4eddb;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+
+  box-shadow:
+    8px 8px 0 rgba(54, 50, 40, 0.18),
+    0 18px 45px rgba(54, 50, 40, 0.15);
+}
+
+h1 {
+  margin: 0 0 1rem;
+  max-width: 15ch;
+
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+p {
+  max-width: 60ch;
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+button {
+  appearance: none;
+  margin: 0;
+  padding: 0.8rem 1.15rem;
+
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+
+  background: var(--button);
+  color: var(--button-text);
+
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+
+  box-shadow: 3px 3px 0 var(--ink);
+
+  transition:
+    background-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+button:hover {
+  background: var(--button-hover);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+/*
+  Gives common message-area patterns a consistent appearance
+  without requiring a specific class name.
+*/
+#message,
+.message,
+[role="status"] {
+  min-height: 1.6em;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid #a39a82;
+
+  color: var(--ink);
+  font-style: italic;
+  font-weight: 700;
+}
+
+@media (max-width: 36rem) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1.5rem;
+    box-shadow: 5px 5px 0 rgba(54, 50, 40, 0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
